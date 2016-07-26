@@ -1,4 +1,5 @@
-/**
+
+
 let v/s var - BLOG!
 ------------
 - var belongs to the entire funtion
@@ -6,6 +7,7 @@ let v/s var - BLOG!
 
 ex where using let is problem
 
+```javascript
 function foo(x,y) {
 	try {
 		var z = bar(x+y);
@@ -26,12 +28,15 @@ function foo(x,y) {
 
 	console.log(z); //ERROR
 }
-
+```
 
 ---------
 another example
 
 using VAR is bad -
+
+```javascript
+
 function foo(x) {
 	for(var i=0;i<x;i++) {
 		$("#btn"+i).click(function() {
@@ -40,8 +45,12 @@ function foo(x) {
 ;	}
 }
 
+```
 
 using let is better -
+
+```javascript
+
 function foo(x) {
 	for(let i=0;i<x;i++) { //important
 		$("#btn"+i).click(function() {
@@ -49,7 +58,7 @@ function foo(x) {
 		});
 ;	}
 }
-
+```
 **/
 
 //------------------------
@@ -58,6 +67,7 @@ function foo(x) {
 
 // *** constant - a variable that cannot be reassigned ***
 
+```javascript
 const PI = 3.14;
 const X = [1,2,3];
 x[0] = 4; //possble! :)
@@ -68,7 +78,7 @@ Y[0] = 4; //ERROR!
 var Z = Object.freeze([1,2,3]);
 Z[0] = 4; //ERROR!
 
-
+```
 /**
  * Arrow functions
  * - cannot give a name... sometimes a problem when debugging in stack trace anonymous function as i
@@ -82,38 +92,45 @@ Z[0] = 4; //ERROR!
 
 //BEFORE
 
+```javascript
 function foo() {
 	var args = [].slice.call(arguments);
 	args.shift(10);
 	args.push(42);
 	bar.apply(null,args);
 }
-
+```
 // in ES6
-
+```javascript
 function foo(...args){
 	bar(10,...args,42); //automatically spread out the array for us
 }
-
+```
 // In above ES6 its clear the intent of the code even tho both do the same stuff.
 
 // we could also do the below but note that ...args should alwys be at the end for arguments.
+
+```javascript
+
 function foo(x,y,...args){
 	var a=[1,2,3,4];
 	var b="5678";
 	var c= [0,...a,...b,...args,7];
 	bar(10,...args,x,y,42);
 }
-
+```
 /**
  * ES6 has defaul value parameter in function.
  */
+
+```javascript
 //BEFORE
 function foo(x) {
 	x = x|| 10;
 	//some code
 }
-
+```
+```javascript
 //ES6
 function foo(x = 10) {
 	//some code
@@ -132,11 +149,13 @@ function required() {
 function foo(x = required()) {
 	//some code
 }
-
+```
 /**
  * structuring in ES6 - BLOG!
  */
 
+
+```javascript
 //BEFORE
 
 function foo() {
@@ -235,11 +254,13 @@ foo({
 	age: 36,
 	dob: "2.3.4"
 })
+```
+
 
 /**
  * Interpolatio in JS using template literals
  */
-
+```javascript
 var x = "kyle";
 var y = 34;
 
@@ -253,3 +274,16 @@ function foo(strings,...values) {
 }
 
 var msg2 = foo`Hello, ${x} and your order costs ${y}`; // function template - value - I am evil :)
+```
+
+/**
+ * Symbols in javascript
+ */
+```javascript
+var key = Symbol("special property");
+
+var o = {
+
+};
+o[key] = 42;
+```
