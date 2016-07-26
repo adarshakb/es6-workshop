@@ -233,5 +233,23 @@ function foo({name,
 foo({
 	name: "kyle",
 	age: 36,
-	dob: ".."
+	dob: "2.3.4"
 })
+
+/**
+ * Interpolatio in JS using template literals
+ */
+
+var x = "kyle";
+var y = 34;
+
+var msg = `Hello, ${x} and your order costs ${y}`; //the back-tick ` ` is used along with ${}
+
+
+// strings - array of strings from msg2
+// rest of the parameters are individual values.
+function foo(strings,...values) {
+	return "I am evil :)";
+}
+
+var msg2 = foo`Hello, ${x} and your order costs ${y}`; // function template - value - I am evil :)
