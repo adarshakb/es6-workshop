@@ -316,8 +316,8 @@ it.next(); //output  {value: undefined, done: true}
 ```
 
 #### Generators + iterator!!!
-
 ... above iterator program can be improved
+```javascript
 var o = {
 	*[Symbol.iterator]() {
 		var idx =0;
@@ -332,3 +332,4 @@ var it = o[Symbol.iterator]()
 it.next(); //output  {value: 1, done: false}
 it.next(); //output  {value: 3, done: false}
 it.next(); //output  {value: 5, done: false}
+```
