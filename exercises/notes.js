@@ -67,3 +67,40 @@ const Y = Object.freeze([1,2,3]);
 Y[0] = 4; //ERROR!
 var Z = Object.freeze([1,2,3]);
 Z[0] = 4; //ERROR!
+
+
+/**
+ * Arrow functions
+ * - cannot give a name... sometimes a problem when debugging in stack trace anonymous function as i
+ * - only expression without {}
+ */
+
+
+/**
+ * arguments modification and passing
+ */
+
+//BEFORE
+
+function foo() {
+	var args = [].slice.call(arguments);
+	args.shift(10);
+	args.push(42);
+	bar.apply(null,args);
+}
+
+// in ES6
+
+function foo(...args){
+	bar(10,...args,42); //automatically spread out the array for us
+}
+
+// In above ES6 its clear the intent of the code even tho both do the same stuff.
+
+// we could also do the below but note that ...args should alwys be at the end for arguments.
+function foo(x,y,...args){
+	var a=[1,2,3,4];
+	var b="5678";
+	var c= [0,...a,...b,...args,7];
+	bar(10,...args,x,y,42);
+}
