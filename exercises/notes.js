@@ -133,3 +133,105 @@ function foo(x = required()) {
 	//some code
 }
 
+/**
+ * structuring in ES6 - BLOG!
+ */
+
+//BEFORE
+
+function foo() {
+	return [1,2,3];
+}
+
+//we are destructuring here. Its very repetitive
+var tmp = foo(),
+	a=tmp[0],
+	b=tmp[1],
+	c=tmp[2];
+
+console.log(a,b,c); //1,2,3
+
+// ES6
+function foo() {
+	return [1,2,3];
+}
+
+var [a,b,c] = foo();
+
+//problem is if foo() return null.. we can change it
+
+var [d,e,f = 10] = foo() || [];
+
+//here F has default value 10 when f is undefined.
+
+var o = {};
+
+[o.a = 10,
+o.b,
+o.c = 9] = foo() || []
+
+//now you can use this to swap
+var p = 10, q = 20;
+[q,p] = [p,q]
+
+//nested destructuring
+
+var o = {}
+
+function foo() {
+	return [1,2,[3,4],5];
+}
+
+[
+ o.a = 9,
+ o.b = 10,
+ [
+ 	o.c ,
+ 	o.d = 10
+ ] = [],
+ o.e = 1
+] = foo();
+
+// object assignment pattern
+
+function foo() {
+	return {
+		a: 1,
+		b: 2
+	};
+}
+
+var {
+	a,
+	b = 10
+} = foo();
+
+// we can assign multiple patterns
+
+function foo() {
+	return {
+		a: 1,
+		b: [2,3,4]
+	};
+}
+
+var {
+	a,
+	b: b1,
+	b : [b2,b3]
+} = foo();
+
+//named arguments with JS
+
+function foo({name,
+			age=30,
+			phone=607744,
+			dob}) {
+	console.log(arguments);
+}
+
+foo({
+	name: "kyle",
+	age: 36,
+	dob: ".."
+})
