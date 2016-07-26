@@ -1,5 +1,5 @@
 /**
-let v/s var
+let v/s var - BLOG!
 ------------
 - var belongs to the entire funtion
 - let is block scoping.
@@ -53,7 +53,7 @@ function foo(x) {
 **/
 
 //------------------------
-// const v/s Object.freeze in ES6
+// const v/s Object.freeze in ES6 - BLOG!
 //------------------------
 
 // *** constant - a variable that cannot be reassigned ***
@@ -104,3 +104,32 @@ function foo(x,y,...args){
 	var c= [0,...a,...b,...args,7];
 	bar(10,...args,x,y,42);
 }
+
+/**
+ * ES6 has defaul value parameter in function.
+ */
+//BEFORE
+function foo(x) {
+	x = x|| 10;
+	//some code
+}
+
+//ES6
+function foo(x = 10) {
+	//some code
+}
+
+// can also have
+function foo(x = bar()) {
+	//som code
+}
+
+//required parameter error - BLOG!
+function required() {
+	throw new Error("parameter required");
+}
+
+function foo(x = required()) {
+	//some code
+}
+
