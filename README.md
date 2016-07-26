@@ -154,10 +154,8 @@ function foo(x = required()) {
 	//some code
 }
 ```
-/**
- * structuring in ES6 - BLOG!
- */
 
+## structuring in ES6 - BLOG!
 
 ```javascript
 //BEFORE
@@ -280,9 +278,8 @@ function foo(strings,...values) {
 var msg2 = foo`Hello, ${x} and your order costs ${y}`; // function template - value - I am evil :)
 ```
 
-/**
- * Symbols in javascript
- */
+## Symbols in javascript
+
 ```javascript
 var key = Symbol("special property");
 
@@ -317,3 +314,21 @@ it.next(); //output  {value: 5, done: false}
 it.next(); //output  {value: 7, done: true}
 it.next(); //output  {value: undefined, done: true}
 ```
+
+#### Generators + iterator!!!
+
+... above iterator program can be improved
+var o = {
+	*[Symbol.iterator]() {
+		var idx =0;
+		while(idx < this.values.length) {
+			yield this.values[idx]; //yield keyword takes whatever value and send it. and pauses
+			idx += 2;
+		}
+	},
+	values: [1,2,3,4,5,6,7]
+}
+var it = o[Symbol.iterator]()
+it.next(); //output  {value: 1, done: false}
+it.next(); //output  {value: 3, done: false}
+it.next(); //output  {value: 5, done: false}
