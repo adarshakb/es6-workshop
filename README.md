@@ -84,15 +84,17 @@ Z[0] = 4; //ERROR!
 
 ```
 
+------------------------
 
 ## Arrow functions
 - problem is cannot give a name... sometimes a problem when debugging in stack trace anonymous function as i
 - only expression without {}
 
 
-/**
- * arguments modification and passing
- */
+
+------------------------
+##arguments modification and passing
+
 
 //BEFORE
 
@@ -123,9 +125,10 @@ function foo(x,y,...args){
 	bar(10,...args,x,y,42);
 }
 ```
-/**
- * ES6 has defaul value parameter in function.
- */
+
+------------------------
+##ES6 has defaul value parameter in function.
+
 
 ```javascript
 //BEFORE
@@ -155,6 +158,7 @@ function foo(x = required()) {
 }
 ```
 
+------------------------
 ## structuring in ES6 - BLOG!
 
 ```javascript
@@ -259,6 +263,7 @@ foo({
 ```
 
 
+------------------------
 
 ##Interpolatio in JS using template literals
 
@@ -278,6 +283,7 @@ function foo(strings,...values) {
 var msg2 = foo`Hello, ${x} and your order costs ${y}`; // function template - value - I am evil :)
 ```
 
+------------------------
 ## Symbols in javascript
 
 ```javascript
