@@ -1,11 +1,15 @@
 
+# Notes
 
-let v/s var - BLOG!
+... this is personal notes... might not make sense if you are not me!... see code examples.
+
+------------
+##let v/s var - BLOG!
 ------------
 - var belongs to the entire funtion
 - let is block scoping.
 
-ex where using let is problem
+####ex where using let is problem
 
 ```javascript
 function foo(x,y) {
@@ -31,9 +35,9 @@ function foo(x,y) {
 ```
 
 ---------
-another example
+####another example
 
-using VAR is bad -
+... here using VAR is bad -
 
 ```javascript
 
@@ -47,7 +51,7 @@ function foo(x) {
 
 ```
 
-using let is better -
+...using let is better -
 
 ```javascript
 
@@ -61,9 +65,9 @@ function foo(x) {
 ```
 **/
 
-//------------------------
-// const v/s Object.freeze in ES6 - BLOG!
-//------------------------
+------------------------
+##const v/s Object.freeze in ES6 - BLOG!
+------------------------
 
 // *** constant - a variable that cannot be reassigned ***
 
@@ -79,11 +83,11 @@ var Z = Object.freeze([1,2,3]);
 Z[0] = 4; //ERROR!
 
 ```
-/**
- * Arrow functions
- * - cannot give a name... sometimes a problem when debugging in stack trace anonymous function as i
- * - only expression without {}
- */
+
+
+## Arrow functions
+- problem is cannot give a name... sometimes a problem when debugging in stack trace anonymous function as i
+- only expression without {}
 
 
 /**
@@ -257,9 +261,9 @@ foo({
 ```
 
 
-/**
- * Interpolatio in JS using template literals
- */
+
+##Interpolatio in JS using template literals
+
 ```javascript
 var x = "kyle";
 var y = 34;
@@ -286,4 +290,30 @@ var o = {
 
 };
 o[key] = 42;
+```
+
+- there are different types of Symbols
+- Symbol.iterator
+
+```javascript
+var o = {
+	[Symbol.iterator]() {
+		var idx=0;
+		var self = this;
+		return {
+			next() {
+				var val = self.values[idx];
+				idx += 2;
+				return { value: val, done: !(idx < self.values.length-1)}
+			}
+		}
+	},
+	values: [1,2,3,4,5,6,7]
+}
+var it = o[Symbol.iterator]()
+it.next(); //output  {value: 1, done: false}
+it.next(); //output  {value: 3, done: false}
+it.next(); //output  {value: 5, done: false}
+it.next(); //output  {value: 7, done: true}
+it.next(); //output  {value: undefined, done: true}
 ```
